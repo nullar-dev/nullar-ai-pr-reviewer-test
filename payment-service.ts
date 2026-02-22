@@ -1,5 +1,6 @@
 // Payment processing service
 // Supports credit card, PayPal, and cryptocurrency payments
+// Updated: 2026-02-22
 
 interface PaymentMethod {
   type: 'card' | 'paypal' | 'crypto'
