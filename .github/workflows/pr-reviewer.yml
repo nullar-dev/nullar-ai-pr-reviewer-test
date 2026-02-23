@@ -1,0 +1,23 @@
+name: AI PR Reviewer
+on:
+  pull_request:
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run AI PR Reviewer
+        uses: nullar-dev/pr-reviewer@main
+        with:
+          leader_model: MiniMax-M2.5
+          leader_api_base_url: https://api.minimax.io/v1
+          leader_api_key_env: OPENAI_API_KEY
+          helper_models: '[{"model":"GLM-4.7","apiBaseUrl":"https://api.z.ai/api/paas/v4","apiKeyEnv":"GLM_API_KEY"}]'
+          debug: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
