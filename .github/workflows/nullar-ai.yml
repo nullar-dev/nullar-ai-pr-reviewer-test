@@ -1,7 +1,6 @@
 name: NullarAI PR Reviewer
-  on:
-    pull_request:
-  jobs:
+on: pull_request
+jobs:
     review:
       runs-on: ubuntu-latest
       permissions:
